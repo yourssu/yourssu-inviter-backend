@@ -33,8 +33,11 @@ class Invitation (
     @Column(name = "description", nullable = false)
     val description: String,
 
-    @Column(name = "date", nullable = false)
-    val date: LocalDateTime,
+    @Column(name = "start_datetime", nullable = false)
+    val startDateTime: LocalDateTime,
+
+    @Column(name = "end_datetime", nullable = false)
+    val endDateTime: LocalDateTime,
 
     @Column(name = "location", nullable = false)
     val location: String,
