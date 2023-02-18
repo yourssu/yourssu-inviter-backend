@@ -24,7 +24,7 @@ class AuthController(
     )
     @GetMapping
     fun test(): String {
-        return "Hello World!"
+        return "Hello World!!!"
     }
 
     @Operation(
