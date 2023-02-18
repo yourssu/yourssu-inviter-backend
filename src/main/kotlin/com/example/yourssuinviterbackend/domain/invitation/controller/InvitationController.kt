@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
-import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -18,25 +18,40 @@ import org.springframework.web.bind.annotation.RestController
 class InvitationController(
     private val invitationService: InvitationService
 ) {
-//    @Operation(
-//        summary = "고객 조회",
-//        responses = [
-//            ApiResponse(
-//                responseCode = "200",
-//                description = "OK",
-//            ),
-//            ApiResponse(
-//                responseCode = "404",
-//                description = "해당하는 정보가 없습니다.",
-//                content = arrayOf(Content(schema = Schema(hidden = true))),
-//            ),
-//        ],
-//    )
-//    @PostMapping
-//    fun createInvitation(
-//        @RequestBody
-//        createInvitationRequest: CreateInvitationRequest
-//    ): CreateInvitationResponse {
-//
-//    }
+    @Operation(
+        summary = "초대장 생성하기",
+        responses = [
+            ApiResponse(
+                responseCode = "200",
+                description = "OK",
+            ),
+            ApiResponse(
+                responseCode = "404",
+                description = "해당하는 정보가 없습니다.",
+                content = arrayOf(Content(schema = Schema(hidden = true))),
+            ),
+        ],
+    )
+    @PostMapping(consumes = [MULTIPART_FORM_DATA_VALUE])
+    fun createInvitation(
+        @RequestBody
+        createInvitationRequest: CreateInvitationRequest,
+    ): CreateInvitationResponse {
+        val invitationId = invitationService.createInvitation(
+            title = createInvitationRequest.title,
+            password = createInvitationRequest.password,
+            type = createInvitationRequest.type,
+            image = createInvitationRequest.image,
+            description = createInvitationRequest.description,
+            startDateTime = createInvitationRequest.startDateTime,
+            endDateTime = createInvitationRequest.endDateTime,
+            location = createInvitationRequest.location,
+            extra = createInvitationRequest.extra,
+            formData = createInvitationRequest.formData,
+        )
+
+        return CreateInvitationResponse(
+            invitationId = invitationId
+        )
+    }
 }

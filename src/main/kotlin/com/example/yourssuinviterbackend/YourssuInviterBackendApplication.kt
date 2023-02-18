@@ -11,3 +11,4 @@ class YourssuInviterBackendApplication
 fun main(args: Array<String>) {
 	runApplication<YourssuInviterBackendApplication>(*args)
 }
+

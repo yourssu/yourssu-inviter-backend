@@ -10,6 +10,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+  servlet:
+    multipart:
+      # location: c:\\Temp\\upload
+      maxFileSize: 10MB
+      maxRequestSize: 10MB
 server:
   port: 8080
   error:

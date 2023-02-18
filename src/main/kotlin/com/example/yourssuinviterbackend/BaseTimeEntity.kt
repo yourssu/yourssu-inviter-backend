@@ -23,5 +23,3 @@ abstract class BaseTimeEntity {
     @Column(name = "updated_at", nullable = false)
     lateinit var modifiedDate: LocalDateTime
 }
-
-typealias ExtraData = Map<String, String>
