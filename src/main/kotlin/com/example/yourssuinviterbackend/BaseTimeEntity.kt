@@ -1,5 +1,7 @@
 package com.example.yourssuinviterbackend
 
+import com.vladmihalcea.hibernate.type.json.JsonType
+import org.hibernate.annotations.TypeDef
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -11,6 +13,7 @@ import javax.persistence.MappedSuperclass
 // 생성, 수정 시간 자동화
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
+@TypeDef(name = "json", typeClass = JsonType::class)
 abstract class BaseTimeEntity {
     @CreatedDate
     @Column(name = "created_at", nullable = false)
@@ -20,3 +23,5 @@ abstract class BaseTimeEntity {
     @Column(name = "updated_at", nullable = false)
     lateinit var modifiedDate: LocalDateTime
 }
+
+typealias ExtraData = Map<String, String>

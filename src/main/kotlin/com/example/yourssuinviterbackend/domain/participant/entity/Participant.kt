@@ -1,6 +1,7 @@
 package com.example.yourssuinviterbackend.domain.participant.entity
 
 import com.example.yourssuinviterbackend.BaseTimeEntity
+import com.example.yourssuinviterbackend.ExtraData
 import com.example.yourssuinviterbackend.domain.invitation.entity.Invitation
 import org.hibernate.annotations.Type
 import javax.persistence.*
@@ -25,5 +26,5 @@ class Participant (
 
      @Type(type = "json")
     @Column(name = "extra", columnDefinition = "json")
-    val extra: List<Map<String, Any>>?,
+    val extra: List<ExtraData>?,
 ) : BaseTimeEntity()
