@@ -2,7 +2,7 @@ package com.example.yourssuinviterbackend.domain.invitation.entity
 
 import com.example.yourssuinviterbackend.BaseTimeEntity
 import com.example.yourssuinviterbackend.ExtraData
-import com.example.yourssuinviterbackend.common.converter.InvitationTypeListConverter
+import com.example.yourssuinviterbackend.common.converter.InvitationTypeConverter
 import com.example.yourssuinviterbackend.common.enums.InvitationType
 import org.hibernate.annotations.Type
 import java.time.LocalDateTime
@@ -23,8 +23,8 @@ class Invitation (
     val title: String,
 
     @Column(name = "type", nullable = false)
-    @Convert(converter = InvitationTypeListConverter::class)
-    val types: List<InvitationType>,
+    @Convert(converter = InvitationTypeConverter::class)
+    val type: InvitationType,
 
     @Lob
     @Column(name = "image", columnDefinition = "MEDIUMBLOB")
@@ -44,10 +44,10 @@ class Invitation (
 
     @Type(type = "json")
     @Column(name = "extra", columnDefinition = "json")
-    val extra: List<ExtraData>?,
+    val extra: ExtraData?,
 
     @Type(type = "json")
     @Column(name = "form_data", columnDefinition = "json")
-    val formData: List<ExtraData>?
+    val formData: ExtraData?
 ) : BaseTimeEntity()
 

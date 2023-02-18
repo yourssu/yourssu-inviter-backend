@@ -30,6 +30,7 @@ dependencies {
 	implementation("io.github.microutils", "kotlin-logging-jvm", "2.1.23")
 	implementation("org.springframework.cloud", "spring-cloud-starter-sleuth", "3.1.3")
     implementation("com.vladmihalcea:hibernate-types-52:2.21.1")
+	implementation("com.google.code.gson", "gson", "2.8.8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
