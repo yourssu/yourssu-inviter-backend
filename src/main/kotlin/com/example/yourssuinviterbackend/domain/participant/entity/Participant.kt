@@ -25,5 +25,5 @@ class Participant (
 
      @Type(type = "json")
     @Column(name = "extra", columnDefinition = "json")
-    val extra: List<Map<String, Any>>,
+    val extra: List<Map<String, Any>>?,
 ) : BaseTimeEntity()
