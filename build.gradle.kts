@@ -28,7 +28,7 @@ dependencies {
 	implementation("org.springdoc", "springdoc-openapi-ui", "1.6.11")
 	implementation("mysql:mysql-connector-java")
 	implementation("io.github.microutils", "kotlin-logging-jvm", "2.1.23")
-	implementation("org.springframework.cloud", "spring-cloud-starter-sleuth", "3.0.1")
+	implementation("org.springframework.cloud", "spring-cloud-starter-sleuth", "3.1.3")
     implementation("com.vladmihalcea:hibernate-types-52:2.21.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

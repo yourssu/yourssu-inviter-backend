@@ -2,6 +2,8 @@ package com.example.yourssuinviterbackend.domain.invitation.entity
 
 import com.example.yourssuinviterbackend.BaseTimeEntity
 import com.example.yourssuinviterbackend.ExtraData
+import com.example.yourssuinviterbackend.common.converter.InvitationTypeListConverter
+import com.example.yourssuinviterbackend.common.enums.InvitationType
 import org.hibernate.annotations.Type
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -19,6 +21,10 @@ class Invitation (
 
     @Column(name = "title", nullable = false)
     val title: String,
+
+    @Column(name = "type", nullable = false)
+    @Convert(converter = InvitationTypeListConverter::class)
+    val types: List<InvitationType>,
 
     @Lob
     @Column(name = "image", columnDefinition = "MEDIUMBLOB")
