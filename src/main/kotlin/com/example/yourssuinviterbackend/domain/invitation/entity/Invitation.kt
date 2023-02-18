@@ -34,9 +34,9 @@ class Invitation (
 
     @Type(type = "json")
     @Column(name = "extra", columnDefinition = "json")
-    val extra: List<Map<String, Any>>,
+    val extra: List<Map<String, Any>>?,
 
     @Type(type = "json")
     @Column(name = "form_data", columnDefinition = "json")
-    val formData: List<Map<String, Any>>
+    val formData: List<Map<String, Any>>?
 ) : BaseTimeEntity()
