@@ -27,6 +27,7 @@ dependencies {
 	implementation("org.springdoc", "springdoc-openapi-kotlin", "1.6.11")
 	implementation("org.springdoc", "springdoc-openapi-ui", "1.6.11")
 	implementation("mysql:mysql-connector-java")
+    implementation("com.vladmihalcea:hibernate-types-52:2.21.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
