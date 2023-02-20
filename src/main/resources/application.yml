@@ -10,11 +10,25 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+    database: mysql
   servlet:
     multipart:
       # location: c:\\Temp\\upload
       maxFileSize: 10MB
       maxRequestSize: 10MB
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+aws:
+  accessKey: ${AWS_ACCESS_KEY_ID}
+  secretKey: ${AWS_SECRET_ACCESS_KEY}
+  region: ${AWS_REGION}
+  endpointUrl: ${AWS_S3_URL}
+  bucketName: ${AWS_S3_BUCKET_NAME}
+
 server:
   port: 8080
   error:

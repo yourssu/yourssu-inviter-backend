@@ -1,4 +1,4 @@
-package kr.smartdoctor.api.autoreceipt.application.errorhandling.exception.base
+package com.example.yourssuinviterbackend.application.errorhandling.exception.base
 
 import org.springframework.web.server.ResponseStatusException
 

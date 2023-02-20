@@ -32,6 +32,10 @@ dependencies {
 	implementation("org.springframework.cloud", "spring-cloud-starter-sleuth", "3.1.3")
     implementation("com.vladmihalcea:hibernate-types-52:2.21.1")
 	implementation("com.google.code.gson", "gson", "2.8.8")
+	implementation("com.amazonaws:aws-java-sdk-s3:1.11.1015")
+	implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+	implementation ("org.springframework.boot:spring-boot-configuration-processor:2.6.3")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

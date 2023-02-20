@@ -29,6 +29,11 @@ jobs:
           spring.datasource.url: ${{ secrets.DATASOURCE_URL }}
           spring.datasource.username: ${{ secrets.DATASOURCE_USERNAME }}
           spring.datasource.password: ${{ secrets.DATASOURCE_PASSWORD }}
+          aws.accessKey: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws.secretKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws.region: ${{ secrets.AWS_REGION }}
+          aws.endpointUrl: ${{ secrets.AWS_S3_URL }}
+          aws.bucketName: ${{ secrets.AWS_S3_BUCKET_NAME }}
 
       # Build
       - name: Build with Gradle

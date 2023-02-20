@@ -10,11 +10,6 @@ import javax.persistence.*
 @Entity
 @Table(name = "invitations")
 class Invitation (
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "invitation_id", nullable = false)
-    val id: Long,
-
     @Column(name = "password", nullable = false)
     val password: String,
 
@@ -26,7 +21,7 @@ class Invitation (
     val type: InvitationType,
 
     @Column(name = "image")
-    val image: String?,
+    val imageUrl: String?,
 
     @Column(name = "description", nullable = false)
     val description: String,
@@ -47,5 +42,10 @@ class Invitation (
     @Type(type = "json")
     @Column(name = "form_data", columnDefinition = "json")
     val formData: Map<String, String>?
-) : BaseTimeEntity()
+) : BaseTimeEntity() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "invitation_id", nullable = false)
+    val id: Long = 0
+}
 

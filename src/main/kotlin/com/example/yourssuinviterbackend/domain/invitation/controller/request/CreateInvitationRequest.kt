@@ -2,7 +2,6 @@ package com.example.yourssuinviterbackend.domain.invitation.controller.request
 
 import com.example.yourssuinviterbackend.common.enums.InvitationType
 import io.swagger.v3.oas.annotations.media.Schema
-import org.springframework.scheduling.annotation.Scheduled
 import java.time.LocalDateTime
 
 @Schema(name = "초대장 생성 Request Body 입니다.")
@@ -25,6 +24,6 @@ class CreateInvitationRequest(
     val extra: String?,
     @Schema(description = "참여자의 추가 입력 정보입니다. JSON 형식으로 보내주세요.")
     val formData: String?,
-    @Schema(description = "초대장의 이미지입니다.")
-    val image: String?,
+    @Schema(description = "초대장의 이미지 주소입니다.")
+    val imageUrl: String?,
 )

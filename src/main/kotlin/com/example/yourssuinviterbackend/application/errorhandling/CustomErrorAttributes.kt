@@ -1,6 +1,6 @@
-package com.example.yourssuassignment.application.errorhandling
+package com.example.yourssuinviterbackend.application.errorhandling
 
-import kr.smartdoctor.api.autoreceipt.application.errorhandling.exception.base.ResponseStatusReasonException
+import com.example.yourssuinviterbackend.application.errorhandling.exception.base.ResponseStatusReasonException
 import mu.KotlinLogging
 import org.springframework.boot.web.error.ErrorAttributeOptions
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes

@@ -1,4 +1,4 @@
-package com.example.yourssuinviterbackend
+package com.example.yourssuinviterbackend.configuration
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
