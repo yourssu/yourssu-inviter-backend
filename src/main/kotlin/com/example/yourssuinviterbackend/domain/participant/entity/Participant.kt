@@ -8,11 +8,6 @@ import javax.persistence.*
 @Entity
 @Table(name = "participants")
 class Participant (
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "participant_id", nullable = false)
-    val id: Long,
-
     @ManyToOne
     @JoinColumn(name = "invitation_id")
     val invitation: Invitation,
@@ -20,10 +15,15 @@ class Participant (
     @Column(name = "name", nullable = false)
     val name: String,
 
-    @Column(name = "contact", nullable = false)
-    val contact: String,
+    @Column(name = "phone_number", nullable = false)
+    val phoneNumber: String,
 
      @Type(type = "json")
     @Column(name = "extra", columnDefinition = "json")
-    val extra: Map<String, String>?,
-) : BaseTimeEntity()
+    val formData: Map<String, String>?,
+) : BaseTimeEntity() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "participant_id", nullable = false)
+    val id: Long = 0
+}
