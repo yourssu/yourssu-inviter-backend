@@ -1,12 +1,13 @@
 package com.example.yourssuinviterbackend.domain.participant.service
 
+import com.example.yourssuinviterbackend.application.errorhandling.exception.InvitationNotFoundException
 import com.example.yourssuinviterbackend.application.errorhandling.exception.ParticipantInfoInvalidException
+import com.example.yourssuinviterbackend.application.errorhandling.exception.ParticipantNotFoundException
 import com.example.yourssuinviterbackend.common.util.JsonConverterUtil
 import com.example.yourssuinviterbackend.domain.invitation.repository.InvitationRepository
+import com.example.yourssuinviterbackend.domain.participant.controller.response.GetParticipantResponse
 import com.example.yourssuinviterbackend.domain.participant.entity.Participant
 import com.example.yourssuinviterbackend.domain.participant.repository.ParticipantRepository
-import org.apache.commons.codec.language.Nysiis
-import org.springframework.scheduling.support.SimpleTriggerContext
 import org.springframework.stereotype.Service
 
 @Service
@@ -38,4 +39,19 @@ class ParticipantService(
 
         return participantRepository.save(participant).id
     }
+
+    private fun Participant.toGetParticipantResponse() = with(this) {
+                GetParticipantResponse(
+                    name = name,
+                    phoneNumber = phoneNumber,
+                    formData = formData
+                )
+    }
+    fun getParticipant(invitationId: Long): List<GetParticipantResponse> =
+        invitationRepository.getInvitationById(invitationId)?.let { invitation ->
+            participantRepository
+            .getAllByInvitation(invitation)
+            ?.map { it.toGetParticipantResponse() }
+                ?: throw ParticipantNotFoundException()
+        } ?: throw InvitationNotFoundException()
 }

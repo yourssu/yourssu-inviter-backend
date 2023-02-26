@@ -2,12 +2,15 @@ package com.example.yourssuinviterbackend.domain.invitation.controller
 
 import com.example.yourssuinviterbackend.domain.invitation.controller.request.CreateInvitationRequest
 import com.example.yourssuinviterbackend.domain.invitation.controller.response.CreateInvitationResponse
+import com.example.yourssuinviterbackend.domain.invitation.controller.response.ReadInvitationResponse
 import com.example.yourssuinviterbackend.domain.invitation.controller.response.UploadImageResponse
 import com.example.yourssuinviterbackend.domain.invitation.service.InvitationService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -85,4 +88,22 @@ class InvitationController(
             invitationId = invitationId
         )
     }
+    @Operation(
+        summary = "초대장 조회",
+        responses = [
+            ApiResponse(
+                responseCode = "200",
+                description = "OK",
+            ),
+            ApiResponse(
+                responseCode = "404",
+                description = "해당하는 정보가 없습니다.",
+                content = arrayOf(Content(schema = Schema(hidden = true))),
+            ),
+        ],
+    )
+    @GetMapping("/{id}")
+    fun readInvitation(
+        @PathVariable id: Long
+    ): ReadInvitationResponse = invitationService.getInvitation(id)
 }

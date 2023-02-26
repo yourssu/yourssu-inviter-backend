@@ -2,8 +2,10 @@ package com.example.yourssuinviterbackend.domain.invitation.service
 
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.ObjectMetadata
+import com.example.yourssuinviterbackend.application.errorhandling.exception.InvitationNotFoundException
 import com.example.yourssuinviterbackend.common.enums.InvitationType
 import com.example.yourssuinviterbackend.common.util.JsonConverterUtil
+import com.example.yourssuinviterbackend.domain.invitation.controller.response.ReadInvitationResponse
 import com.example.yourssuinviterbackend.domain.invitation.dto.InvitationDto
 import com.example.yourssuinviterbackend.domain.invitation.entity.Invitation
 import com.example.yourssuinviterbackend.domain.invitation.repository.InvitationRepository
@@ -61,7 +63,7 @@ class InvitationService(
         return invitationRepository.save(invitation).id
     }
 
-    private fun Invitation.toDto()  = with(this) {
+    private fun Invitation.toDto() = with(this) {
         InvitationDto(
             id = id,
             title = title,
@@ -76,4 +78,25 @@ class InvitationService(
             image = imageUrl,
         )
     }
+
+    fun getInvitation(id: Long): ReadInvitationResponse = invitationRepository
+        .getInvitationById(id)
+        ?.toReadInvitationResponse()
+        ?: throw InvitationNotFoundException()
+
+
+    private fun Invitation.toReadInvitationResponse() = with(this) {
+        ReadInvitationResponse(
+            title = title,
+            type = type,
+            image = imageUrl,
+            description = description,
+            startDateTime = startDateTime,
+            endDateTime = endDateTime,
+            location = location,
+            extra = extra,
+            formData = formData
+        )
+    }
+
 }

@@ -15,7 +15,7 @@ class Participant (
     @Column(name = "name", nullable = false)
     val name: String,
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "contact", nullable = false)
     val phoneNumber: String,
 
      @Type(type = "json")
