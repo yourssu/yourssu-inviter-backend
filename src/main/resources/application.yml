@@ -33,3 +33,5 @@ server:
   port: 8080
   error:
     include-message: always
+  tomcat:
+    connection-timeout: 20000
