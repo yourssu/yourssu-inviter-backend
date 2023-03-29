@@ -4,6 +4,7 @@ import com.example.yourssuinviterbackend.common.enums.InvitationType
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDateTime
 
+// 초대장 생성 request body
 @Schema(name = "초대장 생성 Request Body 입니다.")
 class CreateInvitationRequest(
     @Schema(description = "초대장의 제목입니다.")
